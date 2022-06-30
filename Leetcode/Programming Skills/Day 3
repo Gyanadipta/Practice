@@ -1,0 +1,35 @@
+1
+976. Largest Perimeter Triangle
+https://leetcode.com/problems/largest-perimeter-triangle/
+
+class Solution {
+    public int largestPerimeter(int[] A) {
+        Arrays.sort(A);
+    for (int i = A.length - 3; i >= 0; --i)
+      if (A[i] + A[i + 1] > A[i + 2])
+        return A[i] + A[i + 1] + A[i + 2];
+    return 0;
+    }
+}
+
+2
+1779. Find Nearest Point That Has the Same X or Y Coordinate
+https://leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/
+
+class Solution(object):
+    def nearestValidPoint(self, x, y, points):
+        """
+        :type x: int
+        :type y: int
+        :type points: List[List[int]]
+        :rtype: int
+        """
+        init_d=float('inf')
+        ans=-1
+        for i in range(len(points)):
+            a, b = points[i]
+            if a==x or b==y:
+                d = abs(a-x) + abs(b-y)
+                if d < init_d:
+                    init_d, ans = d, i
+        return ans
