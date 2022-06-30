@@ -1,0 +1,27 @@
+1) 1667. Fix Names in a Table
+https://leetcode.com/problems/fix-names-in-a-table/
+
+# Write your MySQL query statement below
+select user_id, concat(upper(substring(name, 1, 1)), lower(substring(name, 2))) as name
+    from Users
+    order by user_id;
+
+2) 1484. Group Sold Products By The Date
+https://leetcode.com/problems/group-sold-products-by-the-date/
+
+# Write your MySQL query statement below
+select sell_date, 
+count(distinct product) as num_sold,  
+group_concat(distinct product) as products
+from Activities 
+group by sell_date
+order by sell_date
+
+3) 1527. Patients With a Condition
+https://leetcode.com/problems/patients-with-a-condition/
+# Write your MySQL query statement below
+select *
+from Patients
+where conditions like '% DIAB1%' or 
+      conditions like 'DIAB1%'
+
