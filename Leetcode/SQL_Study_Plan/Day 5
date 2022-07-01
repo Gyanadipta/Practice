@@ -1,0 +1,29 @@
+1)175. combine two tables
+https://leetcode.com/problems/combine-two-tables/
+
+# Write your MySQL query statement below
+SELECT FirstName, LastName, City, State
+FROM Person
+LEFT JOIN Address
+ON Person.PersonId = Address.PersonId
+
+2)1581. Customer Who Visited But Did Not Make Any Transactions Problem
+
+select customer_id, count(visit_id) as count_no_trans
+from Visits
+where visit_id not in 
+    (select visit_id
+    from Transactions
+    group by visit_id)
+group by customer_id
+
+
+3)1148. Article Views I
+https://leetcode.com/problems/article-views-i/
+
+# Write your MySQL query statement below
+select author_id as id
+from Views
+where author_id = viewer_id
+group by id
+order by id
