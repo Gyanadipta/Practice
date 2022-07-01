@@ -1,0 +1,39 @@
+1)589. N-ary Tree Preorder Traversal
+https://leetcode.com/problems/n-ary-tree-preorder-traversal/
+
+https://dev.to/seanpgallivan/solution-n-ary-tree-preorder-traversal-506
+
+
+2)496. Next Greater Element I
+https://leetcode.com/problems/next-greater-element-i/
+
+class Solution(object):
+    def nextGreaterElement(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        ans=[-1]*len(nums1)
+     
+        for i in nums1:
+            temp=nums2.index(i)
+            for j in range(temp,len(nums2)):
+                ans[nums1.index(i)]=-1
+                if nums2[j]>i:
+                    ans[nums1.index(i)]=nums2[j]
+                    break   
+        return ans
+
+3)1232. Check If It Is a Straight Line
+https://leetcode.com/problems/check-if-it-is-a-straight-line/
+
+class Solution:
+    def checkStraightLine(self, coordinates: List[List[int]]) -> bool:
+        x0, y0, x1, y1 = *coordinates[0], *coordinates[1]
+        dx = x1 - x0
+        dy = y1 - y0
+
+        return all((x - x0) * dy == (y - y0) * dx for x, y in coordinates)
+
+
