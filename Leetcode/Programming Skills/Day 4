@@ -1,0 +1,85 @@
+1)1822. Sign of the Product of an Array
+https://leetcode.com/problems/sign-of-the-product-of-an-array/
+
+class Solution:
+    def arraySign(self, nums: List[int]) -> int:
+        count = 0
+        if 0 in nums:
+            return 0
+        for i in nums:
+            if i<0:
+                count += 1
+        if(count%2==0):
+            return 1
+        else:
+            return -1
+            
+
+2)1502. Can Make Arithmetic Progression From Sequence
+https://leetcode.com/problems/can-make-arithmetic-progression-from-sequence/
+
+class Solution:
+    def canMakeArithmeticProgression(self, arr: List[int]) -> bool:
+        arr.sort()
+        l1 = []
+        for i in range(len(arr)-1):
+            l1.append(arr[i] - arr[i+1])
+        s = set(l1)
+        if len(s) == 1:
+            return True
+        else:
+            return False
+
+3)202. Happy Number
+https://leetcode.com/problems/happy-number/
+
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        s = { 1 }
+
+        while n not in s:
+            s.add(n)
+            n = sum(i * i for i in map(int, str(n)))
+
+        return n == 1
+        
+
+4)1790. Check if One String Swap Can Make Strings Equal
+https://leetcode.com/problems/check-if-one-string-swap-can-make-strings-equal/
+
+class Solution {
+    public boolean areAlmostEqual(String s1, String s2) {
+        int len1 = s1.length();
+        int len2 = s2.length();
+        
+        if (len1 != len2) {
+            return false;
+        }
+        
+        int diffNum = 0;
+        int[] idx = new int[2];
+        
+        for (int i = 0; i < len1; i++) {
+            if (s1.charAt(i) != s2.charAt(i)) {
+                if (diffNum >= 2) {
+                    return false;
+                }
+                
+                idx[diffNum++] = i;
+            }
+        }
+        
+        if (diffNum == 0) {
+            return true;
+        }
+        
+        if (diffNum == 2) {
+            if (s1.charAt(idx[0]) == s2.charAt(idx[1])
+                && s1.charAt(idx[1]) == s2.charAt(idx[0])) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+}
