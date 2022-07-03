@@ -1,0 +1,40 @@
+1)1588. Sum of All Odd Length Subarrays
+https://leetcode.com/problems/sum-of-all-odd-length-subarrays/
+
+class Solution:
+    def sumOddLengthSubarrays(self, arr: List[int]) -> int:
+        sum = 0
+        l = len(arr)
+        for i in range(l):
+            for j in range(i, l, 2):
+                for k in range(i, j + 1, 1):
+                    sum += arr[k]
+        return sum
+        
+
+2)283. Move Zeroes
+https://leetcode.com/problems/move-zeroes/
+
+class Solution:
+    def moveZeroes(self, A: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        n = len(A)
+        j = 0
+        for i in range(n):
+            if A[i] != 0:
+                A[j], A[i] = A[i], A[j]
+                j += 1
+        return(A)  
+
+3)1672. Richest Customer Wealth
+https://leetcode.com/problems/richest-customer-wealth/
+
+class Solution:
+    def maximumWealth(self, accounts: List[List[int]]) -> int:
+        l = []
+        for i in accounts:
+            l.append(sum(i))
+        return max(l)
+        
