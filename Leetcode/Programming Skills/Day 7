@@ -1,0 +1,46 @@
+1)1572. Matrix Diagonal Sum
+https://leetcode.com/problems/matrix-diagonal-sum/
+
+class Solution {
+    public int diagonalSum(int[][] mat) {
+        int n=mat.length;
+        
+        int sum=0;
+        int i=0,j=0;
+        
+        while(i<n)
+        {
+            sum+=mat[i][j];
+            i++;
+            j++;
+        }
+        
+        i=0;
+        j=n-1;
+        
+        while(i<n)
+        {
+          if(i!=j)   sum+=mat[i][j];
+            
+            i++;
+            j--;
+        }
+        
+        return sum;
+    }
+}
+
+2)566. Reshape the Matrix
+https://leetcode.com/problems/reshape-the-matrix/
+
+class Solution {
+    public int[][] matrixReshape(int[][] nums, int r, int c) {
+        int n = nums.length, m = nums[0].length, k = 0;
+        if (r*c != n*m) return nums;
+        int[][] res = new int[r][c];
+        for (int i=0;i<r;i++) 
+            for (int j=0;j<c;j++,k++) 
+                res[i][j] = nums[k/m][k%m];
+        return res;
+    }
+}
