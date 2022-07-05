@@ -1,0 +1,54 @@
+1) 709. To Lower Case
+https://leetcode.com/problems/to-lower-case/
+
+class Solution(object):
+    def toLowerCase(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        return (s.lower())
+        
+
+2) 1309. Decrypt String from Alphabet to Integer Mapping
+https://leetcode.com/problems/decrypt-string-from-alphabet-to-integer-mapping/
+
+class Solution {
+  public String freqAlphabets(String s) {
+    String ans = "";
+
+    for (int i = 0; i < s.length();) {
+      if (i + 2 < s.length() && s.charAt(i + 2) == '#') {
+        ans += (char) (Integer.valueOf(s.substring(i, i + 2)) + 'a' - 1);
+        i += 3;
+      } else {
+        ans += (char) ((s.charAt(i) - '0') + 'a' - 1);
+        i += 1;
+      }
+    }
+
+    return ans;
+  }
+}
+
+
+3) 953. Verifying an Alien Dictionary
+https://leetcode.com/problems/verifying-an-alien-dictionary/
+
+class Solution {
+    public boolean isAlienSorted(String[] W, String O) {
+        Map<Character,Integer> alpha = new HashMap<>();
+        for (int i = 0; i < O.length(); i++)
+            alpha.put(O.charAt(i), i);
+        for (int i = 1; i < W.length; i++) {
+            String a = W[i-1], b = W[i];
+            for (int j = 0; j < a.length(); j++) {
+                if (j == b.length()) return false;
+                char achar = a.charAt(j), bchar = b.charAt(j);
+                if (alpha.get(achar) < alpha.get(bchar)) break;
+                if (alpha.get(achar) > alpha.get(bchar)) return false;
+            }
+        }
+        return true;
+    }
+}
