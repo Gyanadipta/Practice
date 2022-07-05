@@ -1,0 +1,58 @@
+1) 1768. Merge Strings Alternately
+https://leetcode.com/problems/merge-strings-alternately/
+
+class Solution:
+    def mergeAlternately(self,s, t):
+        i = j = 0
+        result = ""
+        while i < len(s) and j < len(t):
+            result += s[i] + t[j]
+            i+=1
+            j+=1
+        while i < len(s):
+            result += s[i]
+            i += 1
+        while j < len(t):
+            result += t[j]
+            j += 1
+        return result
+
+2) 1678. Goal Parser Interpretation
+https://leetcode.com/problems/goal-parser-interpretation/
+
+class Solution(object):
+    def interpret(self, s):
+        """
+        :type command: str
+        :rtype: str
+        """
+        check = {"(al)":"al", "()":"o","G":"G"}
+        t,ans ="",""
+        for i in range(len(s)):
+            t+=s[i]
+            if t in check:
+                ans+=check[t]
+                t=""
+        return ans
+
+
+3) 389. Find the Difference
+https://leetcode.com/problems/find-the-difference/
+
+class Solution(object):
+    def findTheDifference(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: str
+        """
+        dic = defaultdict(int)
+        for c in s:
+            dic[c] += 1
+        for c in t:
+            dic[c] -= 1
+        for k in dic:
+            if dic[k] != 0:
+                return k
+
+
