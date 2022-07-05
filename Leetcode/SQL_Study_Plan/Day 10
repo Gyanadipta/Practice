@@ -1,0 +1,41 @@
+1) 182. Duplicate Emails
+https://leetcode.com/problems/duplicate-emails/
+
+# Write your MySQL query statement below
+SELECT Email from Person 
+group by Email 
+having count(*) > 1 
+
+
+2) 1050. Actors and Directors Who Cooperated At Least Three Times
+https://leetcode.com/problems/actors-and-directors-who-cooperated-at-least-three-times/
+
+# Write your MySQL query statement below
+SELECT actor_id, director_id
+FROM ActorDirector
+GROUP BY actor_id, director_id
+HAVING COUNT(*) >= 3
+
+
+3) 1587. Bank Account Summary II
+https://leetcode.com/problems/bank-account-summary-ii/
+
+# Write your MySQL query statement below
+SELECT u.name AS NAME,SUM(t.amount) AS BALANCE
+FROM Transactions t LEFT JOIN Users u
+ON u.account = t.account
+GROUP BY u.account 
+HAVING SUM(t.amount)>10000;
+
+
+4) 1084. Sales Analysis III
+https://leetcode.com/problems/sales-analysis-iii/
+
+# Write your MySQL query statement below
+select p.product_id, p.product_name
+from Product p
+left join Sales s
+on p.product_id = s.product_id
+group by p.product_id
+having sum(s.sale_date between '2019-01-01' and '2019-03-31') = count(s.sale_date)
+
