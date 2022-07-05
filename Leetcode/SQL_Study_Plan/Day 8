@@ -1,0 +1,37 @@
+1) 586. Customer Placing the Largest Number of Orders
+https://leetcode.com/problems/customer-placing-the-largest-number-of-orders/
+
+# Write your MySQL query statement below
+select
+ customer_number 
+from
+ (select customer_number, count(order_number) order_count 
+  from orders group by customer_number) a 
+order by order_count desc limit 1
+
+2) 511. Game Play Analysis I
+https://leetcode.com/problems/game-play-analysis-i/
+
+select player_id, min(event_date) as first_login
+from Activity 
+group by player_id
+
+3) 1890. The Latest Login in 2020
+https://leetcode.com/problems/the-latest-login-in-2020/
+
+# Write your MySQL query statement below
+select user_id, max(time_stamp) as last_stamp 
+from Logins 
+WHERE 
+time_stamp >= '2020-01-01' 
+and 
+time_stamp < '2021-01-01' 
+group by user_id
+
+4) 1741. Find Total Time Spent by Each Employee
+https://leetcode.com/problems/find-total-time-spent-by-each-employee/
+
+# Write your MySQL query statement below
+SELECT event_day AS day, emp_id, SUM(out_time - in_time) AS total_time
+FROM Employees
+GROUP BY event_day, emp_id;
