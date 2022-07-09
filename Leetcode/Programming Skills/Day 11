@@ -1,0 +1,89 @@
+1) 1356. Sort Integers by The Number of 1 Bits
+https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/
+
+class Solution(object):
+    def sortByBits(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: List[int]
+        """
+        d=[]
+        for i in sorted(arr):
+            d.append((i,bin(i).count('1')))
+        sd = sorted(d, key=lambda i: i[1])
+        ans=[]
+        for i in sd:
+            ans.append(i[0])
+        return ans
+
+2) 232. Implement Queue using Stacks
+https://leetcode.com/problems/implement-queue-using-stacks/
+
+class MyQueue {
+  public void push(int x) {
+    input.push(x);
+  }
+
+  public int pop() {
+    peek();
+    return output.pop();
+  }
+
+  public int peek() {
+    if (output.isEmpty())
+      while (!input.isEmpty())
+        output.push(input.pop());
+    return output.peek();
+  }
+
+  public boolean empty() {
+    return input.isEmpty() && output.isEmpty();
+  }
+
+  private Deque<Integer> input = new ArrayDeque<>();
+  private Deque<Integer> output = new ArrayDeque<>();
+}
+
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
+ 
+
+3) 242. Valid Anagram
+https://leetcode.com/problems/valid-anagram/
+
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        #if strings having different length of word they cant be Anagram So return False
+        if len(s)!=len(t): 
+            return False
+        
+        countS,countT = {},{} #creating two hashmaps for counting of words
+        
+        for i in range(len(s)): #iterating through any string
+            #get function will helps to handle keyerror by passing default value as 0 
+            countS[s[i]] = 1 + countS.get(s[i],0) 
+            countT[t[i]] = 1 + countT.get(t[i],0)
+        
+        for c in countS: # here we used c as iterator 
+            if countS[c] !=countT.get(c,0): #if counting of both string not equal return false
+                return False
+        
+        return True #otherwise return True
+
+4) 217. Contains Duplicate
+https://leetcode.com/problems/contains-duplicate/
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        s = set(nums)
+        if(len(nums)!=len(s)):
+            return True
+        else:
+            return False
