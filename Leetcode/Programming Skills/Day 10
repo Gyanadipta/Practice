@@ -1,0 +1,115 @@
+1) 1290. Convert Binary Number in a Linked List to Integer
+https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public int getDecimalValue(ListNode head) {
+        ListNode curr = head;
+        int result = 0;
+        while(curr != null) {
+            result = (result << 1) | curr.val;
+            curr = curr.next;
+        }
+        return result;
+    }
+}
+
+2) 876. Middle of the Linked List
+https://leetcode.com/problems/middle-of-the-linked-list/
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        ListNode fast = head;
+    ListNode slow = head;
+    while (fast != null && fast.next != null) {
+        fast = fast.next.next;
+        slow = slow.next;
+    }
+    return slow;
+    }
+}
+
+3) 104. Maximum Depth of Binary Tree
+https://leetcode.com/problems/maximum-depth-of-binary-tree/
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public int maxDepth(TreeNode root) {
+        if (root == null)
+            return 0;
+        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+    }
+}
+
+4) 404. Sum of Left Leaves
+https://leetcode.com/problems/sum-of-left-leaves/
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public int sumOfLeftLeaves(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        if (root.left == null) {
+            return sumOfLeftLeaves(root.right);
+        }
+        else {
+            int count = 0;
+            if (root.left.left == null && root.left.right == null) {
+                count += root.left.val;
+            }
+            else {
+                count += sumOfLeftLeaves(root.left);
+            }
+            count += sumOfLeftLeaves(root.right);
+            return count;
+        }
+    }
+}
